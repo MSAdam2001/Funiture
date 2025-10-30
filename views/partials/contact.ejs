@@ -1,0 +1,59 @@
+<section id="contact" class="container py-5">
+  <h2 class="text-center mb-4">Contact Us</h2>
+  <p class="text-center mb-5">
+    Have a question or need assistance? We’d love to hear from you!
+  </p>
+
+  <!-- Contact Form -->
+  <form action="/contact" method="POST" class="mx-auto" style="max-width: 600px;">
+    <div class="mb-3">
+      <label for="name" class="form-label">Full Name</label>
+      <input type="text" name="name" id="name" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" name="email" id="email" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="message" class="form-label">Message</label>
+      <textarea
+        name="message"
+        id="message"
+        rows="4"
+        class="form-control"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mb-4">Send Message</button>
+  </form>
+
+  <!-- Social Media Links -->
+  <div class="text-center mt-4">
+    <h5 class="mb-3">Follow Us</h5>
+    <div class="d-flex justify-content-center gap-4">
+      <a href="https://www.facebook.com/profile.php?id=100081127568739&mibextid=ZbWKwL"
+         target="_blank"
+         class="text-decoration-none text-primary fs-3">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="https://x.com/MujaheedSaid1?t=0xP1WRYe44DNfGGeLPOMig&s=09"
+         target="_blank"
+         class="text-decoration-none text-info fs-3">
+        <i class="bi bi-twitter-x"></i> <!-- ✅ FIXED -->
+      </a>
+      <a href="https://www.instagram.com/mujaheed8005?igsh=OTc5c2pmbzZ0MmEy"
+         target="_blank"
+         class="text-decoration-none text-danger fs-3">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@mujaheed8090?_r=1&_d=ec7l8k907fi1dc&sec_uid=MS4wLjABAAAACAi2T_m0Ge0hct5INqTFeHAXKpUQZ-EwSJoOWVJE5EvfBWAPTJ_Ft_uoXRK4c2Bt"
+         target="_blank"
+         class="text-decoration-none text-dark fs-3">
+        <i class="bi bi-tiktok"></i>
+      </a>
+    </div>
+  </div>
+</section>
