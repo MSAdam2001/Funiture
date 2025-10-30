@@ -1,3 +1,6 @@
+// 🔹 Load environment variables from .env
+require('dotenv').config();
+
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -6,10 +9,13 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("./models/User");
 
-// 🔹 MongoDB connection
+// 🔹 MongoDB Atlas connection using environment variable
 mongoose
-  .connect("mongodb://127.0.0.1:27017/furnitureDB")
-  .then(() => console.log("✅ MongoDB connected"))
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB Atlas connected"))
   .catch((err) => console.log("❌ MongoDB connection error:", err));
 
 // 🔹 EJS & Static setup
@@ -17,11 +23,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// 🔹 Session setup
+// 🔹 Session setup using environment variable
 app.use(
   session({
-    secret: "secretkey",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
@@ -66,8 +73,8 @@ const furnitureItems = [
 ];
 
 // 🔹 Routes
-app.use("/", require("./routes/auth"));
-app.use("/blog", require("./routes/blog"));
+app.use("/", require("./routes/auth")); // Make sure this file exists
+app.use("/blog", require("./routes/blog")); // Make sure this file exists
 
 // 🔹 Home route
 app.get("/", (req, res) => {
@@ -82,6 +89,7 @@ app.post("/contact", (req, res) => {
 });
 
 // 🔹 Start server
-app.listen(3000, () =>
-  console.log("🚀 Server running on http://localhost:3000")
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on http://localhost:${PORT}`)
 );
