@@ -1,5 +1,8 @@
 // 🔹 Load environment variables from .env
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/.env' });
+console.log("🔍 Loaded .env file!");
+console.log("🔍 MONGO_URI =", process.env.MONGO_URI);
+console.log("🔍 SESSION_SECRET =", process.env.SESSION_SECRET);
 
 const express = require("express");
 const app = express();
